@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import ChartNumbers from '@/components/ChartNumbers';
 import Footer from '@/components/Footer';
-import { FiUser, FiInfo, FiPieChart, FiCheckCircle, FiLoader } from 'react-icons/fi';
+import { FiUser, FiPieChart, FiCheckCircle, FiLoader } from 'react-icons/fi';
 import { LuTicket } from 'react-icons/lu';
 
 interface UserSession {
@@ -131,13 +131,13 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Leyenda aclaratoria */}
+        {/* Leyenda aclaratoria 
         <div className="bg-white p-4 rounded-2xl border border-[#EFE6DD] shadow-sm flex items-start gap-3 text-xs sm:text-sm text-[#5C4D49]">
           <FiInfo className="text-lg text-[#800020] shrink-0 mt-0.5" />
           <p>
             <strong>Nota para los compradores:</strong> Los números en color gris o verde corresponden a los asignados a los alumnos. Haz clic o pasa el cursor sobre cada casillero para ver su disponibilidad.
           </p>
-        </div>
+        </div> */}
 
         {/* Grilla de números */}
         <div className="bg-white p-4 sm:p-6 rounded-2xl border border-[#EFE6DD] shadow-md">
