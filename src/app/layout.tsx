@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 
-const DOMAIN = 'https://rifa-grilli2026.vercel.app';
+const DOMAIN = 'https://rifa-grilli2026.vercel.app/';
 
 export const metadata: Metadata = {
   metadataBase: new URL(DOMAIN),
