@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/og-image.svg',
+        url: '/og-image.png',
         width: 1200,
         height: 630,
         alt: 'Rifa Egresados 2026 - Instituto Grilli',
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Rifa Egresados 2026 - Instituto Grilli',
     description: 'Consulta la grilla de números disponibles en tiempo real.',
-    images: ['/og-image.svg'],
+    images: ['/og-image.png'],
   },
 };
 
