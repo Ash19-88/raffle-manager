@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/og-image.png',
+        url: 'https://rifa-grilli2026.vercel.app/og-image.png',
         width: 1200,
         height: 630,
         alt: 'Rifa Egresados 2026 - Instituto Grilli',
