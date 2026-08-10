@@ -12,13 +12,37 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 });
 
+
+const DOMAIN = 'https://rifa-grilli2026.vercel.app';
+
 export const metadata: Metadata = {
-  title: 'Rifa Egresados 2026',
-  description: 'Consulta en tiempo real la grilla de números y estado de ventas de la Rifa de Egresados.',
-  icons: {
-    icon:'/icon.svg'
-  }
+  metadataBase: new URL(DOMAIN),
+  title: 'Rifa Egresados 2026 - Instituto Grilli',
+  description: 'Consulta en tiempo real la grilla de números de la Rifa de Egresados del Instituto Grilli.',
+  openGraph: {
+    title: 'Rifa Egresados 2026 - Instituto Grilli',
+    description: 'Consulta la grilla de números disponibles en tiempo real.',
+    url: DOMAIN,
+    siteName: 'Rifa Egresados 2026',
+    locale: 'es_AR',
+    type: 'website',
+    images: [
+      {
+        url: '/og-image.svg',
+        width: 1200,
+        height: 630,
+        alt: 'Rifa Egresados 2026 - Instituto Grilli',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Rifa Egresados 2026 - Instituto Grilli',
+    description: 'Consulta la grilla de números disponibles en tiempo real.',
+    images: ['/og-image.svg'],
+  },
 };
+
 
 export default function RootLayout({
   children,
