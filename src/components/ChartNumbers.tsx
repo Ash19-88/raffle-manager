@@ -24,14 +24,6 @@ export default function ChartNumbers({ numerosVendidos, totalNumeros = 721 }: Pr
     <div className="space-y-5">
       {/* Resumen de Estado */}
       <div className="grid grid-cols-3 gap-3">
-        <div className="bg-[#F5EFEB] p-3 sm:p-4 rounded-2xl border border-[#EFE6DD] text-center shadow-sm">
-          <div className="flex items-center justify-center gap-1.5 text-[#800020] text-xs font-bold uppercase mb-1">
-            <FiLayers />
-            <span className="hidden sm:inline">Total Rifas</span>
-            <span className="sm:hidden">Total</span>
-          </div>
-          <span className="block text-xl sm:text-2xl font-black text-[#2D1A17]">{totalNumeros}</span>
-        </div>
 
         <div className="bg-emerald-50/60 p-3 sm:p-4 rounded-2xl border border-emerald-200/60 text-center shadow-sm">
           <div className="flex items-center justify-center gap-1.5 text-emerald-800 text-xs font-bold uppercase mb-1">
@@ -47,6 +39,14 @@ export default function ChartNumbers({ numerosVendidos, totalNumeros = 721 }: Pr
             <span>Vendidos</span>
           </div>
           <span className="block text-xl sm:text-2xl font-black text-[#800020]">{totalVendidos}</span>
+        </div>
+        <div className="bg-[#F5EFEB] p-3 sm:p-4 rounded-2xl border border-[#EFE6DD] text-center shadow-sm">
+          <div className="flex items-center justify-center gap-1.5 text-[#800020] text-xs font-bold uppercase mb-1">
+            <FiLayers />
+            <span className="hidden sm:inline">Total Rifas</span>
+            <span className="sm:hidden">Total</span>
+          </div>
+          <span className="block text-xl sm:text-2xl font-black text-[#2D1A17]">{totalNumeros}</span>
         </div>
       </div>
 

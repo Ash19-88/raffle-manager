@@ -4,7 +4,15 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import ChartNumbers from '@/components/ChartNumbers';
 import Footer from '@/components/Footer';
-import { FiUser, FiPieChart, FiCheckCircle, FiLoader } from 'react-icons/fi';
+import { 
+  FiUser, 
+  FiPieChart, 
+  FiCheckCircle, 
+  FiLoader, 
+  FiClock, 
+  FiCalendar, 
+  FiLock,
+} from 'react-icons/fi';
 import { LuTicket } from 'react-icons/lu';
 
 interface UserSession {
@@ -16,6 +24,35 @@ export default function HomePage() {
   const [loading, setLoading] = useState(true);
   const [session, setSession] = useState<UserSession | null>(null);
   const [checkingAuth, setCheckingAuth] = useState(true);
+
+  // --- CONTADOR LÍMITE (HOY 16:00 HS ARGENTINA) ---
+  const [timeLeft, setTimeLeft] = useState<{ hours: number; minutes: number; seconds: number } | null>(null);
+  const [isClosed, setIsClosed] = useState(false);
+
+  useEffect(() => {
+    // Límite de hoy a las 16:00 hs (ART / UTC-3)
+    const FECHA_LIMITE = new Date('2026-08-14T16:00:00-03:00').getTime();
+
+    const checkTime = () => {
+      const now = new Date().getTime();
+      const difference = FECHA_LIMITE - now;
+
+      if (difference <= 0) {
+        setIsClosed(true);
+        setTimeLeft(null);
+      } else {
+        const hours = Math.floor(difference / (1000 * 60 * 60));
+        const minutes = Math.floor((difference / (1000 * 60)) % 60);
+        const seconds = Math.floor((difference / 1000) % 60);
+        setTimeLeft({ hours, minutes, seconds });
+      }
+    };
+
+    checkTime();
+    const timer = setInterval(checkTime, 1000);
+    return () => clearInterval(timer);
+  }, []);
+  // ------------------------------------------------
 
   const TOTAL_NUMEROS = 721;
 
@@ -98,6 +135,39 @@ export default function HomePage() {
 
       {/* Contenido Principal */}
       <section className="max-w-5xl mx-auto w-full px-4 py-6 sm:py-8 flex-1 flex flex-col gap-6">
+        
+        {/* BANNER INFORMATIVO / COUNTDOWN */}
+        <div className="bg-white border border-[#EFE6DD] rounded-2xl p-4 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-[#800020]/10 text-[#800020] flex items-center justify-center shrink-0">
+              <FiCalendar className="text-xl" />
+            </div>
+            <div>
+              <p className="text-xs font-bold text-[#800020] uppercase tracking-wider">Información del Sorteo</p>
+              <p className="text-sm font-semibold text-[#3A2D28]">
+                Sortea el <strong className="font-bold text-[#800020]">15 de Agosto por Lotería Nacional Nocturna</strong>. Cierre de recepción: Hoy 16:00 hs.
+              </p>
+            </div>
+          </div>
+
+          {isClosed ? (
+            <div className="bg-red-100 text-red-800 text-xs font-bold px-3.5 py-2 rounded-xl flex items-center gap-1.5 shrink-0">
+              <FiLock className="text-sm" />
+              <span>Carga de números cerrada</span>
+            </div>
+          ) : (
+            timeLeft && (
+              <div className="bg-[#FAF6F0] border border-[#EFE8DC] text-[#3A2D28] px-4 py-2 rounded-xl flex items-center gap-2 shrink-0">
+                <FiClock className="text-[#800020] text-sm" />
+                <span className="text-xs font-medium">Tiempo restante:</span>
+                <span className="text-sm font-black text-[#800020]">
+                  {String(timeLeft.hours).padStart(2, '0')}h {String(timeLeft.minutes).padStart(2, '0')}m {String(timeLeft.seconds).padStart(2, '0')}s
+                </span>
+              </div>
+            )
+          )}
+        </div>
+
         {/* Banner de resumen para padres */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
           <div className="bg-[#F5EFEB] p-4 rounded-2xl border border-[#EFE6DD] shadow-sm flex items-center gap-3">
@@ -130,14 +200,6 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-
-        {/* Leyenda aclaratoria 
-        <div className="bg-white p-4 rounded-2xl border border-[#EFE6DD] shadow-sm flex items-start gap-3 text-xs sm:text-sm text-[#5C4D49]">
-          <FiInfo className="text-lg text-[#800020] shrink-0 mt-0.5" />
-          <p>
-            <strong>Nota para los compradores:</strong> Los números en color gris o verde corresponden a los asignados a los alumnos. Haz clic o pasa el cursor sobre cada casillero para ver su disponibilidad.
-          </p>
-        </div> */}
 
         {/* Grilla de números */}
         <div className="bg-white p-4 sm:p-6 rounded-2xl border border-[#EFE6DD] shadow-md">

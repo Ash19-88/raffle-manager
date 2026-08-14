@@ -4,6 +4,16 @@ import { getSession } from '@/lib/auth';
 
 export async function POST(req: Request) {
   try {
+    // ----------------------------------------------------
+    // VALIDACIÓN DE HORA LÍMITE (HOY 16:00 HS ARGENTINA)
+    // ----------------------------------------------------
+    const FECHA_LIMITE = new Date('2026-08-14T16:00:00-03:00');
+    if (new Date() >= FECHA_LIMITE) {
+      return NextResponse.json(
+        { error: 'La recepción de números cerró a las 16:00 hs.' },
+        { status: 400 }
+      );
+    }
     // 1. Verificación de Autenticación
     const session = await getSession();
     if (!session) {
