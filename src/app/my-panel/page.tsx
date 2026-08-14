@@ -50,8 +50,8 @@ export default function MiPanelPage() {
   const [isClosed, setIsClosed] = useState(false);
 
   useEffect(() => {
-    // Definimos el límite de hoy 14/08/2026 a las 16:00 hs
-    const FECHA_LIMITE = new Date("2026-08-14T16:00:00-03:00").getTime();
+    // Definimos el límite de hoy 14/08/2026 a las 19:00 hs
+    const FECHA_LIMITE = new Date("2026-08-14T19:00:00-03:00").getTime();
 
     const checkTime = () => {
       const now = new Date().getTime();
@@ -198,7 +198,7 @@ export default function MiPanelPage() {
         {isClosed ? (
           <div className="bg-red-50 border border-red-200 text-red-800 p-4 rounded-2xl flex items-center justify-center gap-2 text-sm font-bold shadow-sm">
             <FiLock className="w-5 h-5 text-red-700 shrink-0" />
-            <span>Recepción de números finalizada (Cierre: 16:00 hs)</span>
+            <span>Recepción de números finalizada (Cierre: 19:00 hs)</span>
           </div>
         ) : (
           timeLeft && (
@@ -213,7 +213,7 @@ export default function MiPanelPage() {
                 {String(timeLeft.seconds).padStart(2, "0")}s
               </div>
               <p className="text-[10px] text-red-200/80 mt-1 font-medium">
-                Límite: Hoy a las 16:00 hs
+                Límite: Hoy a las 19:00 hs
               </p>
             </div>
           )
@@ -239,7 +239,7 @@ export default function MiPanelPage() {
           </div>
         </div>
 
-        {/* Botón Acción Principal (Se deshabilita a las 16 hs) */}
+        {/* Botón Acción Principal (Se deshabilita a las 19 hs) */}
         <button
           onClick={() => setModalOpen(true)}
           disabled={botonDeshabilitado}
@@ -252,7 +252,7 @@ export default function MiPanelPage() {
           {isClosed ? (
             <>
               <FiLock className="w-5 h-5" />
-              <span>Carga Cerrada (16:00 hs)</span>
+              <span>Carga Cerrada (19:00 hs)</span>
             </>
           ) : completoTodosLosNumeros ? (
             <>
