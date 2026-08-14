@@ -7,10 +7,10 @@ export async function POST(req: Request) {
     // ----------------------------------------------------
     // VALIDACIÓN DE HORA LÍMITE (HOY 16:00 HS ARGENTINA)
     // ----------------------------------------------------
-    const FECHA_LIMITE = new Date('2026-08-14T16:00:00-03:00');
+    const FECHA_LIMITE = new Date('2026-08-14T19:00:00-03:00');
     if (new Date() >= FECHA_LIMITE) {
       return NextResponse.json(
-        { error: 'La recepción de números cerró a las 16:00 hs.' },
+        { error: 'La recepción de números cerró a las 19:00 hs.' },
         { status: 400 }
       );
     }
