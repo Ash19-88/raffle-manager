@@ -145,7 +145,7 @@ export default function HomePage() {
             <div>
               <p className="text-xs font-bold text-[#800020] uppercase tracking-wider">Información del Sorteo</p>
               <p className="text-sm font-semibold text-[#3A2D28]">
-                Sortea el <strong className="font-bold text-[#800020]">15 de Agosto por Lotería Nacional Nocturna</strong>. Cierre de recepción: Hoy 16:00 hs.
+                Sortea el <strong className="font-bold text-[#800020]">15 de Agosto por Lotería Nacional Nocturna</strong>. Cierre de recepción: 14 de Agosto 16:00 hs.
               </p>
             </div>
           </div>
