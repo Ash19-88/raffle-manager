@@ -14,7 +14,7 @@ import {
   //FiLock,
 } from "react-icons/fi";
 import { LuTicket } from "react-icons/lu";
-import AwardsSection from "@/components/AwardsSection";
+// import AwardsSection from "@/components/AwardsSection";
 
 interface UserSession {
   nombre_completo: string;
@@ -137,9 +137,9 @@ export default function HomePage() {
 
       {/* Contenido Principal */}
       <section className="max-w-5xl mx-auto w-full px-4 py-6 sm:py-8 flex-1 flex flex-col gap-6">
-        <div className="bg-white p-5 sm:p-6 rounded-2xl border border-[#EFE6DD] shadow-sm">
+        {/* <div className="bg-white p-5 sm:p-6 rounded-2xl border border-[#EFE6DD] shadow-sm">
           <AwardsSection />
-        </div>
+        </div> */}
         {/* BANNER INFORMATIVO / COUNTDOWN */}
         <div className="bg-white border border-[#EFE6DD] rounded-2xl p-4 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
           <div className="flex items-center gap-3">
