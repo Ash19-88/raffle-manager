@@ -11,8 +11,8 @@ import {
   FiLoader,
   FiCalendar,
   FiFileText,
-  FiClock,
-  FiLock,
+  //FiClock,
+  //FiLock,
   FiCheckCircle,
 } from "react-icons/fi";
 import { LuTicket } from "react-icons/lu";
@@ -41,7 +41,7 @@ export default function MiPanelPage() {
   const [loading, setLoading] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
 
-  // --- LOGICA DE COUNTDOWN Y CIERRE (HOY 16:00 HS ARGENTINA) ---
+  /* --- LOGICA DE COUNTDOWN Y CIERRE (DESACTIVADA PARA ESTA RIFA) ---
   const [timeLeft, setTimeLeft] = useState<{
     hours: number;
     minutes: number;
@@ -72,7 +72,7 @@ export default function MiPanelPage() {
     const timer = setInterval(checkTime, 1000);
     return () => clearInterval(timer);
   }, []);
-  // -------------------------------------------------------------
+  ----------------------------------------------------------------- */
 
   const refrescarVentas = async () => {
     try {
@@ -145,8 +145,8 @@ export default function MiPanelPage() {
   // 1. Calculamos si completó todos sus números
   const completoTodosLosNumeros = totalVendidos >= totalAsignados;
 
-  // 2. Definimos si el botón debe estar deshabilitado
-  const botonDeshabilitado = isClosed || completoTodosLosNumeros;
+  // 2. Definimos si el botón debe estar deshabilitado (solo por rango completo)
+  const botonDeshabilitado = completoTodosLosNumeros;
 
   return (
     <main className="min-h-screen bg-[#FDFBF7] pb-12">
@@ -194,7 +194,7 @@ export default function MiPanelPage() {
       </header>
 
       <div className="max-w-3xl mx-auto p-4 space-y-5">
-        {/* COMPONENTE COUNTDOWN / ALERTA CIERRE */}
+        {/* --- BANNER DE COUNTDOWN / ALERTA DE CIERRE DESACTIVADO ---
         {isClosed ? (
           <div className="bg-red-50 border border-red-200 text-red-800 p-4 rounded-2xl flex items-center justify-center gap-2 text-sm font-bold shadow-sm">
             <FiLock className="w-5 h-5 text-red-700 shrink-0" />
@@ -218,6 +218,7 @@ export default function MiPanelPage() {
             </div>
           )
         )}
+        ------------------------------------------------------------- */}
 
         {/* Métricas */}
         <div className="grid grid-cols-2 gap-3">
@@ -239,7 +240,7 @@ export default function MiPanelPage() {
           </div>
         </div>
 
-        {/* Botón Acción Principal (Se deshabilita a las 19 hs) */}
+        {/* Botón Acción Principal */}
         <button
           onClick={() => setModalOpen(true)}
           disabled={botonDeshabilitado}
@@ -249,15 +250,10 @@ export default function MiPanelPage() {
               : "bg-[#800020] hover:bg-[#6B1124] active:scale-[0.99] text-[#FFFDF9] shadow-[#800020]/20 cursor-pointer"
           }`}
         >
-          {isClosed ? (
-            <>
-              <FiLock className="w-5 h-5" />
-              <span>Carga Cerrada (19:00 hs)</span>
-            </>
-          ) : completoTodosLosNumeros ? (
+          {completoTodosLosNumeros ? (
             <>
               <FiCheckCircle className="w-5 h-5 text-green-600" />
-              <span>¡Completaste tus 10 números! 🎉</span>
+              <span>¡Completaste tus números asignados! 🎉</span>
             </>
           ) : (
             <>

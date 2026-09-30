@@ -8,7 +8,7 @@ interface Props {
   totalNumeros?: number;
 }
 
-export default function ChartNumbers({ numerosVendidos, totalNumeros = 721 }: Props) {
+export default function ChartNumbers({ numerosVendidos, totalNumeros = 1000 }: Props) {
   const [busqueda, setBusqueda] = useState('');
 
   const numeros = Array.from({ length: totalNumeros }, (_, i) => i);

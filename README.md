@@ -1,6 +1,6 @@
 # 🎟️ Raffle Manager - School Event Platform
 
-A modern, full-stack web application designed for high school graduating classes to manage, track, and audit a large-scale fundraising raffle (721 tickets across 3 classes). Built with Next.js, React 19, TypeScript, and Supabase.
+A modern, full-stack web application designed for high school graduating classes to manage, track, and audit a large-scale fundraising raffle (1000 tickets across 3 classes). Built with Next.js, React 19, TypeScript, and Supabase.
 
 ---
 
@@ -18,7 +18,7 @@ This platform digitized the entire administrative process:
 
 - **Custom Student Onboarding:** Class selection and student roster integration with a mandatory initial password reset for security.
 - **Student Dashboard:** Personalized portal where students view their assigned ticket numbers and log sales data (ticket number + buyer contact details).
-- **Interactive Global Board:** Main public dashboard displaying all 720 ticket statuses in real-time.
+- **Interactive Global Board:** Main public dashboard displaying all 1000 ticket statuses in real-time.
 - **Search & Real-time Metrics:** Search functionality by student or ticket number, including progress counters showing sales percentages, total sold, and remaining available tickets.
 - **Data Audit & Winner Selection:** Structured database records to export complete buyer-seller lists for final prize draws and financial auditing.
 
