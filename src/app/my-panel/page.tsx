@@ -17,6 +17,7 @@ import {
 } from "react-icons/fi";
 import { LuTicket } from "react-icons/lu";
 import OfferedNumberModal from "@/components/OfferedNumberModal";
+import PersonalGridNumbers from "@/components/PersonalGridNumbers";
 
 interface Venta {
   numero: number;
@@ -220,25 +221,16 @@ export default function MiPanelPage() {
         )}
         ------------------------------------------------------------- */}
 
-        {/* Métricas */}
-        <div className="grid grid-cols-2 gap-3">
-          <div className="bg-white p-5 rounded-2xl border border-[#EFE8DC] shadow-sm text-center">
-            <span className="block text-2xl sm:text-3xl font-black text-[#800020]">
-              {totalVendidos} / {totalAsignados}
-            </span>
-            <span className="text-[11px] font-bold text-[#7C6E65] uppercase tracking-wider">
-              Vendidos
-            </span>
-          </div>
-          <div className="bg-white p-5 rounded-2xl border border-[#EFE8DC] shadow-sm text-center">
-            <span className="block text-2xl sm:text-3xl font-black text-[#3A2D28]">
-              {totalAsignados - totalVendidos}
-            </span>
-            <span className="text-[11px] font-bold text-[#7C6E65] uppercase tracking-wider">
-              Disponibles
-            </span>
-          </div>
-        </div>
+        {/* Grilla de Números estilo Tarjeta para Capturas */}
+        {session && (
+          <PersonalGridNumbers
+            nombreCompleto={session.nombre_completo}
+            curso={session.curso}
+            numeroDesde={session.numero_desde}
+            numeroHasta={session.numero_hasta}
+            numerosVendidos={ventas.map((v) => v.numero)}
+          />
+        )}
 
         {/* Botón Acción Principal */}
         <button
