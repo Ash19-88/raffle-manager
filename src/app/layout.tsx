@@ -17,10 +17,10 @@ const DOMAIN = 'https://rifa-grilli2026.vercel.app/';
 
 export const metadata: Metadata = {
   metadataBase: new URL(DOMAIN),
-  title: 'Rifa Egresados 2026 - Instituto Grilli',
+  title: 'Rifa Egresados - Instituto Grilli',
   description: 'Consulta en tiempo real la grilla de números de la Rifa de Egresados del Instituto Grilli.',
   openGraph: {
-    title: 'Rifa Egresados 2026 - Instituto Grilli',
+    title: 'Rifa Egresados - Instituto Grilli',
     description: 'Consulta la grilla de números disponibles en tiempo real.',
     url: DOMAIN,
     siteName: 'Rifa Egresados 2026',
@@ -31,13 +31,13 @@ export const metadata: Metadata = {
         url: 'https://rifa-grilli2026.vercel.app/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Rifa Egresados 2026 - Instituto Grilli',
+        alt: 'Rifa Egresados - Instituto Grilli',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Rifa Egresados 2026 - Instituto Grilli',
+    title: 'Rifa Egresados - Instituto Grilli',
     description: 'Consulta la grilla de números disponibles en tiempo real.',
     images: ['/og-image.png'],
   },
