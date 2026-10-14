@@ -99,7 +99,7 @@ export default function HomePage() {
             </div>
             <div>
               <h1 className="text-md sm:text-lg md:text-2xl font-black tracking-tight leading-tight">
-                Rifa Egresados 2026
+                Rifa Egresados
               </h1>
               <p className="text-xs sm:text-sm text-[#EFE6DD] font-medium">
                 Tablero de números en tiempo real
