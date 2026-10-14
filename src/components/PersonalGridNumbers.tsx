@@ -29,7 +29,7 @@ export default function PersonalGridNumbers({
       {/* Encabezado */}
       <div className="text-center pb-4 border-b border-[#EFE8DC]">
         <h1 className="text-xl font-extrabold uppercase tracking-widest text-[#800020] bg-[#800020]/10 px-3 py-1 rounded-full">
-          Rifa Día de la Madre
+          Rifa Para Presexto
         </h1>
 
         {/* Progreso */}
@@ -47,7 +47,7 @@ export default function PersonalGridNumbers({
 
 
       {/* Grilla de Números */}
-      <div className="grid grid-cols-4 sm:grid-cols-5 gap-2.5 pt-1">
+      <div className="grid grid-cols-6 gap-2.5 pt-1">
         {numeros.map((num) => {
           const estaVendido = vendidosSet.has(num);
 

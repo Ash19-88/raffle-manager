@@ -10,7 +10,7 @@ import {
   FiCheckCircle,
   FiLoader,
   //FiClock,
-  FiCalendar,
+  // FiCalendar,
   //FiLock,
 } from "react-icons/fi";
 import { LuTicket } from "react-icons/lu";
@@ -141,7 +141,7 @@ export default function HomePage() {
           <AwardsSection />
         </div> */}
         {/* BANNER INFORMATIVO / COUNTDOWN */}
-        <div className="bg-white border border-[#EFE6DD] rounded-2xl p-4 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+        {/* <div className="bg-white border border-[#EFE6DD] rounded-2xl p-4 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-[#800020]/10 text-[#800020] flex items-center justify-center shrink-0">
               <FiCalendar className="text-xl" />
@@ -160,7 +160,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* --- BLOQUE COUNTDOWN DESACTIVADO ---
+         
           {isClosed ? (
             <div className="bg-red-100 text-red-800 text-xs font-bold px-3.5 py-2 rounded-xl flex items-center gap-1.5 shrink-0">
               <FiLock className="text-sm" />
@@ -177,8 +177,8 @@ export default function HomePage() {
               </div>
             )
           )}
-           -------------------------------------- */}
-        </div>
+           
+        </div> */}
 
         {/* Banner de resumen para padres */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
