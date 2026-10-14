@@ -22,7 +22,7 @@ interface Estudiante {
   nombre_completo: string;
 }
 
-const CURSOS = ['5to 1ra'];
+const CURSOS = ['5to 1era'];
 
 export default function LoginPage() {
   const router = useRouter();
