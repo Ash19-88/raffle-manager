@@ -1,20 +1,22 @@
 import { NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabase';
-import { getSession } from '@/lib/auth';
+// import { supabase } from '@/lib/supabase';
+// import { getSession } from '@/lib/auth';
 
-export async function POST(req: Request) {
+// export async function POST(req: Request) {
+export async function POST() {
   try {
-    /* ----------------------------------------------------
-    // VALIDACIÓN DE HORA LÍMITE (DESACTIVADA PARA ESTA RIFA)
     // ----------------------------------------------------
-    const FECHA_LIMITE = new Date('2026-08-14T19:00:00-03:00');
-    if (new Date() >= FECHA_LIMITE) {
-      return NextResponse.json(
-        { error: 'La recepción de números cerró a las 19:00 hs.' },
-        { status: 400 }
-      );
-    }
-      ---------------------------------------------------- */
+    // CIERRE DEFINITIVO DE CARGA TRAS EL SORTEO
+    // ----------------------------------------------------
+    return NextResponse.json(
+      { error: 'La carga de números se encuentra cerrada definitivamente por sorteo finalizado.' },
+      { status: 400 }
+    );
+
+    /* ----------------------------------------------------
+    // CÓDIGO ANTERIOR CONSERVADO PARA FUTURAS RIFAS:
+    // ----------------------------------------------------
+
     // 1. Verificación de Autenticación
     const session = await getSession();
     if (!session) {
@@ -71,7 +73,6 @@ export async function POST(req: Request) {
     ]);
 
     if (error) {
-      // Código PostgreSQL 23505: unique_violation (el número ya existe en ventas_rifa)
       if (error.code === '23505') {
         return NextResponse.json(
           { error: 'Este número ya fue registrado como vendido' },
@@ -82,6 +83,8 @@ export async function POST(req: Request) {
     }
 
     return NextResponse.json({ success: true });
+    ---------------------------------------------------- */
+
   } catch {
     return NextResponse.json({ error: 'Error interno del servidor' }, { status: 500 });
   }

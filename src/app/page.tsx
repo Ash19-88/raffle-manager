@@ -3,18 +3,16 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import ChartNumbers from "@/components/ChartNumbers";
+import WinningNumbersBanner from "@/components/WinningNumbersBanner";
 import Footer from "@/components/Footer";
 import {
   FiUser,
   FiPieChart,
   FiCheckCircle,
   FiLoader,
-  //FiClock,
-  // FiCalendar,
-  //FiLock,
+  FiLock,
 } from "react-icons/fi";
 import { LuTicket } from "react-icons/lu";
-// import AwardsSection from "@/components/AwardsSection";
 
 interface UserSession {
   nombre_completo: string;
@@ -26,39 +24,10 @@ export default function HomePage() {
   const [session, setSession] = useState<UserSession | null>(null);
   const [checkingAuth, setCheckingAuth] = useState(true);
 
-  /* --- CONTADOR LÍMITE (DESACTIVADO PARA ESTA RIFA) ---
-  const [timeLeft, setTimeLeft] = useState<{ hours: number; minutes: number; seconds: number } | null>(null);
-  const [isClosed, setIsClosed] = useState(false);
-
-  useEffect(() => {
-    // Límite  (ART / UTC-3)
-    const FECHA_LIMITE = new Date('2026-10-16T23:00:00-03:00').getTime();
-
-    const checkTime = () => {
-      const now = new Date().getTime();
-      const difference = FECHA_LIMITE - now;
-
-      if (difference <= 0) {
-        setIsClosed(true);
-        setTimeLeft(null);
-      } else {
-        const hours = Math.floor(difference / (1000 * 60 * 60));
-        const minutes = Math.floor((difference / (1000 * 60)) % 60);
-        const seconds = Math.floor((difference / 1000) % 60);
-        setTimeLeft({ hours, minutes, seconds });
-      }
-    };
-
-    checkTime();
-    const timer = setInterval(checkTime, 1000);
-    return () => clearInterval(timer);
-  }, []);
-  -------------------------------------------------- */
-
   const TOTAL_NUMEROS = 1000;
 
   useEffect(() => {
-    // 1. Cargar datos de la grilla pública
+    // 1. Cargar datos de la grilla pública (sigue mostrando los números vendidos en tiempo real)
     fetch("/api/rifas/publicas")
       .then((res) => res.json())
       .then((data) => {
@@ -91,7 +60,7 @@ export default function HomePage() {
 
   return (
     <main className="min-h-screen bg-[#FDFBF7] text-[#2D1A17] flex flex-col">
-      <header className="bg-[#800020] text-[#FDFBF7] shadow-lg border-b-4 border-[#D4A373]">
+      <nav className="bg-[#800020] text-[#FDFBF7] shadow-lg border-b-4 border-[#D4A373]">
         <div className="max-w-5xl mx-auto px-4 py-4 space-y-4 sm:space-y-0 sm:py-6 flex flex-col sm:flex-row justify-between items-start sm:items-center">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-[#FDFBF7] text-[#800020] flex items-center justify-center text-xl sm:text-2xl shadow-inner font-bold">
@@ -133,52 +102,39 @@ export default function HomePage() {
             </Link>
           )}
         </div>
-      </header>
+      </nav>
 
       {/* Contenido Principal */}
       <section className="max-w-5xl mx-auto w-full px-4 py-6 sm:py-8 flex-1 flex flex-col gap-6">
-        {/* <div className="bg-white p-5 sm:p-6 rounded-2xl border border-[#EFE6DD] shadow-sm">
-          <AwardsSection />
-        </div> */}
-        {/* BANNER INFORMATIVO / COUNTDOWN */}
-        {/* <div className="bg-white border border-[#EFE6DD] rounded-2xl p-4 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+        
+        {/* Banner con los ganadores oficiales del sorteo */}
+        <WinningNumbersBanner />
+
+        {/* BANNER DE CIERRE DE CARGA (Reutilizando la estructura anterior) */}
+        <div className="bg-white border border-[#EFE6DD] rounded-2xl p-4 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-[#800020]/10 text-[#800020] flex items-center justify-center shrink-0">
-              <FiCalendar className="text-xl" />
+              <FiLock className="text-xl" />
             </div>
             <div>
               <p className="text-xs font-bold text-[#800020] uppercase tracking-wider">
-                Información del Sorteo
+                Estado del Sorteo
               </p>
               <p className="text-sm font-semibold text-[#3A2D28]">
-                Sortea el{" "}
+                El sorteo se realizó por{" "}
                 <strong className="font-bold text-[#800020]">
-                  17 de Octubre por Lotería Nacional Nocturna
+                  Lotería Nacional Nocturna
                 </strong>
-                .
+                . La carga de números se encuentra cerrada.
               </p>
             </div>
           </div>
 
-         
-          {isClosed ? (
-            <div className="bg-red-100 text-red-800 text-xs font-bold px-3.5 py-2 rounded-xl flex items-center gap-1.5 shrink-0">
-              <FiLock className="text-sm" />
-              <span>Carga de números cerrada</span>
-            </div>
-          ) : (
-            timeLeft && (
-              <div className="bg-[#FAF6F0] border border-[#EFE8DC] text-[#3A2D28] px-4 py-2 rounded-xl flex items-center gap-2 shrink-0">
-                <FiClock className="text-[#800020] text-sm" />
-                <span className="text-xs font-medium">Tiempo restante:</span>
-                <span className="text-sm font-black text-[#800020]">
-                  {String(timeLeft.hours).padStart(2, '0')}h {String(timeLeft.minutes).padStart(2, '0')}m {String(timeLeft.seconds).padStart(2, '0')}s
-                </span>
-              </div>
-            )
-          )}
-           
-        </div> */}
+          <div className="bg-red-100 text-red-800 text-xs font-bold px-4 py-2.5 rounded-xl flex items-center gap-2 shrink-0">
+            <FiLock className="text-sm" />
+            <span>Carga Cerrada Definitivamente</span>
+          </div>
+        </div>
 
         {/* Banner de resumen para padres */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
@@ -225,7 +181,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Grilla de números */}
+        {/* Grilla de números (Sigue consultando y mostrando la grilla pública en tiempo real) */}
         <div className="bg-white p-4 sm:p-6 rounded-2xl border border-[#EFE6DD] shadow-md">
           {loading ? (
             <div className="flex flex-col items-center justify-center py-16 text-[#800020]">
